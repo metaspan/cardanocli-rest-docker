@@ -18,6 +18,9 @@ RUN wget https://hydra.iohk.io/build/13648290/download/1/cardano-node-1.33.0-lin
 RUN tar -xf cardano-node-1.33.0-linux.tar.gz
 RUN echo "export PATH=/opt/cardano:${PATH}" >> /root/.bashrc
 
+# node|npm needs this in order to find cardano-cli
+ENV PATH=/opt/cardano:$PATH
+
 # cardanocli-rest
 RUN cd /opt && git clone https://github.com/Berry-Pool/cardanocli-rest
 WORKDIR /opt/cardanocli-rest
@@ -37,5 +40,5 @@ VOLUME [ "/var/cardano" ]
 # Util alias
 RUN echo "alias ll='ls -l'" >> /root/.bashrc
 
-CMD [ "pm2", 'start', '${NETWORK}.config.js' ]
+CMD [ "/usr/local/bin/npm", "run", "start" ]
 # CMD [ "/bin/bash" ]
