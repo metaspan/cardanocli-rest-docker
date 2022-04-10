@@ -1,0 +1,14 @@
+cli:
+    # Cardano network to be used [Default: 'mainnet']
+    network: mainnet
+    # Cardano era to be used [Default: 'allegra']
+    era: allegra
+    # Directory where file are created. [Default: '.']
+    dir: './files'
+    # Shelley Genesis file location.
+    shelleyGenesisPath: '/opt/cardano/configuration/cardano/mainnet-shelley-genesis.json'
+    # cardano-node socket directory path. [Default: null]
+    socketPath: '/var/cardano/ipc/node.socket'
+helper:
+    # Time in seconds after which download files are removed
+    tmpFileTTL: 600
